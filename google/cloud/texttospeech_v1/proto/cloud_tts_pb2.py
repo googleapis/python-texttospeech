@@ -796,8 +796,8 @@ SynthesisInput = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_SYNTHESISINPUT,
         __module__="google.cloud.texttospeech_v1.proto.cloud_tts_pb2",
-        __doc__="""Contains text input to be synthesized. Either ``text`` or
-  ``ssml`` must be supplied. Supplying both or neither returns
+        __doc__="""Contains text input to be synthesized. Either ``text`` or ``ssml`` must
+  be supplied. Supplying both or neither returns
   [google.rpc.Code.INVALID\_ARGUMENT][]. The input size is limited to 5000
   characters.
   
