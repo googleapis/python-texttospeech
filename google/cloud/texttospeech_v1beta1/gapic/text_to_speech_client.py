@@ -202,14 +202,18 @@ class TextToSpeechClient(object):
             >>> response = client.list_voices()
 
         Args:
-            language_code (str): Optional. Recommended.
-                `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__ language tag.
-                If specified, the ListVoices call will only return voices that can be
-                used to synthesize this language\_code. E.g. when specifying "en-NZ",
-                you will get supported "en-*" voices; when specifying "no", you will get
-                supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices;
-                specifying "zh" will also get supported "cmn-*" voices; specifying
-                "zh-hk" will also get supported "yue-\*" voices.
+            language_code (str): Required. The language (and potentially also the region) of the
+                voice expressed as a
+                `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__ language tag,
+                e.g. "en-US". This should not include a script tag (e.g. use "cmn-cn"
+                rather than "cmn-Hant-cn"), because the script will be inferred from the
+                input provided in the SynthesisInput. The TTS service will use this
+                parameter to help choose an appropriate voice. Note that the TTS service
+                may choose a voice with a slightly different language code than the one
+                selected; it may substitute a different region (e.g. using en-US rather
+                than en-CA if there isn't a Canadian voice available), or even a
+                different language, e.g. using "nb" (Norwegian Bokmal) instead of "no"
+                (Norwegian)".
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.

@@ -25,7 +25,7 @@ class AudioEncoding(enum.IntEnum):
     audio format that we'd like.
 
     Attributes:
-      AUDIO_ENCODING_UNSPECIFIED (int): Not specified. Will return result ``google.rpc.Code.INVALID_ARGUMENT``.
+      AUDIO_ENCODING_UNSPECIFIED (int): javanano_as_lite
       LINEAR16 (int): Uncompressed 16-bit signed little-endian samples (Linear PCM).
       Audio content returned as LINEAR16 also contains a WAV header.
       MP3 (int): MP3 audio at 32kbps.
@@ -43,8 +43,7 @@ class AudioEncoding(enum.IntEnum):
 
 class SsmlVoiceGender(enum.IntEnum):
     """
-    Gender of the voice as described in `SSML voice
-    element <https://www.w3.org/TR/speech-synthesis11/#edef_voice>`__.
+    javalite_serializable
 
     Attributes:
       SSML_VOICE_GENDER_UNSPECIFIED (int): An unspecified gender.
