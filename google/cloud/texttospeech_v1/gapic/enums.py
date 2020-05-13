@@ -25,7 +25,8 @@ class AudioEncoding(enum.IntEnum):
     audio format that we'd like.
 
     Attributes:
-      AUDIO_ENCODING_UNSPECIFIED (int): Not specified. Will return result ``google.rpc.Code.INVALID_ARGUMENT``.
+      AUDIO_ENCODING_UNSPECIFIED (int): Not specified. Will return result
+      ``google.rpc.Code.INVALID_ARGUMENT``.
       LINEAR16 (int): Uncompressed 16-bit signed little-endian samples (Linear PCM).
       Audio content returned as LINEAR16 also contains a WAV header.
       MP3 (int): MP3 audio at 32kbps.
