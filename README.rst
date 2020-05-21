@@ -52,10 +52,13 @@ Supported Python Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Python >= 3.5
 
-Deprecated Python Versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-Python == 2.7. Python 2.7 support will be removed on January 1, 2020.
+The last version of this library that is compatible with Python 2.7 is `1.0.1`_.
 
+.. code-block:: console
+    
+    pip install google-cloud-texttospeech==1.0.1
+
+.. _`1.0.1`: https://pypi.org/project/google-cloud-texttospeech/1.0.1/
 
 Mac/Linux
 ^^^^^^^^^
