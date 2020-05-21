@@ -19,7 +19,7 @@ import synthtool as s
 from synthtool import gcp
 from synthtool.languages import python
 
-gapic = gcp.GAPICBazel()
+gapic = gcp.GAPICMicrogenerator()
 common = gcp.CommonTemplates()
 versions = ["v1beta1", "v1"]
 
@@ -30,15 +30,8 @@ for version in versions:
     library = gapic.py_library(
         service="texttospeech",
         version=version,
-        bazel_target=f"//google/cloud/texttospeech/{version}:texttospeech-{version}-py",
-        include_protos=True,
     )
-    s.move(library / f"google/cloud/texttospeech_{version}")
-    s.move(library / f"tests/unit/gapic/{version}")
-    s.move(library / f"docs/gapic/{version}")
-
-# Use the highest version library to generate import alias.
-s.move(library / "google/cloud/texttospeech.py")
+    s.move(library)
 
 # Fix bad docstrings.
 s.replace("**/gapic/*_client.py", r'\\"(.+?)-\*\\"', r'"\1-\\*"')
@@ -46,12 +39,12 @@ s.replace("**/gapic/*_client.py", r'\\"(.+?)-\*\\"', r'"\1-\\*"')
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
-templated_files = common.py_library(unit_cov_level=85, cov_level=85)
+templated_files = common.py_library(unit_cov_level=85, cov_level=85, samples=True)
 s.move(templated_files)
 
 # ----------------------------------------------------------------------------
 # Samples templates
 # ----------------------------------------------------------------------------
-python.py_samples()
+python.py_samples(skip_readmes=True)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
