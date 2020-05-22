@@ -27,14 +27,18 @@ versions = ["v1beta1", "v1"]
 # Generate texttospeech GAPIC layer
 # ----------------------------------------------------------------------------
 for version in versions:
-    library = gapic.py_library(
-        service="texttospeech",
-        version=version,
-    )
-    s.move(library)
+    library = gapic.py_library(service="texttospeech", version=version,)
+    s.move(library, excludes=["setup.py", "noxfile.py", "docs/index.rst"])
 
 # Fix bad docstrings.
 s.replace("**/gapic/*_client.py", r'\\"(.+?)-\*\\"', r'"\1-\\*"')
+
+# Sphinx interprets `*` as emphasis
+s.replace(
+    ["google/cloud/**/client.py", "google/cloud/**/cloud_tts.py"],
+    "((en)|(no)|(nb)(cmn)|(yue))-\*",
+    "\g<1>-\*",
+)
 
 # ----------------------------------------------------------------------------
 # Add templated files
@@ -45,6 +49,6 @@ s.move(templated_files)
 # ----------------------------------------------------------------------------
 # Samples templates
 # ----------------------------------------------------------------------------
-python.py_samples(skip_readmes=True)
+# python.py_samples(skip_readmes=True)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
