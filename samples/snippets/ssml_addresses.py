@@ -46,12 +46,12 @@ def ssml_to_audio(ssml_text, outfile):
     # Builds the voice request, selects the language code ("en-US") and
     # the SSML voice gender ("MALE")
     voice = texttospeech.types.VoiceSelectionParams(
-        language_code="en-US", ssml_gender=texttospeech.enums.SsmlVoiceGender.MALE
+        language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.MALE
     )
 
     # Selects the type of audio file to return
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.MP3
+        audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
     # Performs the text-to-speech request on the text input with the selected

@@ -41,7 +41,7 @@ def synthesize_text_with_audio_profile(text, output, effects_profile_id):
     # Note: you can pass in multiple effects_profile_id. They will be applied
     # in the same order they are provided.
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.MP3,
+        audio_encoding=texttospeech.AudioEncoding.MP3,
         effects_profile_id=[effects_profile_id],
     )
 

@@ -38,11 +38,11 @@ def synthesize_text_file(text_file):
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
     voice = texttospeech.types.VoiceSelectionParams(
-        language_code="en-US", ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE
+        language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
     )
 
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.MP3
+        audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
     response = client.synthesize_speech(request = {'input': input_text, 'voice': voice, 'audio_config': audio_config})
@@ -74,11 +74,11 @@ def synthesize_ssml_file(ssml_file):
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
     voice = texttospeech.types.VoiceSelectionParams(
-        language_code="en-US", ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE
+        language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
     )
 
     audio_config = texttospeech.types.AudioConfig(
-        audio_encoding=texttospeech.enums.AudioEncoding.MP3
+        audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
     response = client.synthesize_speech(request = {'input': input_text, 'voice': voice, 'audio_config': audio_config})
