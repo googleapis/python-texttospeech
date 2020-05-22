@@ -26,9 +26,6 @@ import nox
 BLACK_VERSION = "black==19.3b0"
 BLACK_PATHS = ["docs", "google", "tests", "noxfile.py", "setup.py"]
 
-if os.path.exists("samples"):
-    BLACK_PATHS.append("samples")
-
 
 @nox.session(python="3.7")
 def lint(session):
@@ -84,13 +81,13 @@ def default(session):
     )
 
 
-@nox.session(python=["2.7", "3.5", "3.6", "3.7", "3.8"])
+@nox.session(python=["3.6", "3.7", "3.8"])
 def unit(session):
     """Run the unit test suite."""
     default(session)
 
 
-@nox.session(python=["2.7", "3.7"])
+@nox.session(python=["3.7"])
 def system(session):
     """Run the system test suite."""
     system_test_path = os.path.join("tests", "system.py")
