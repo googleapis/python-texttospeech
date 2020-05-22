@@ -45,7 +45,7 @@ def synthesize_text_with_audio_profile(text, output, effects_profile_id):
         effects_profile_id=[effects_profile_id],
     )
 
-    response = client.synthesize_speech(request={'input': input_text, 'voice': voice, 'audio_config': audio_config})
+    response = client.synthesize_speech(request={"input": input_text, "voice": voice, "audio_config": audio_config})
 
     # The response's audio_content is binary.
     with open(output, "wb") as out:
