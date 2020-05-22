@@ -56,7 +56,7 @@ def ssml_to_audio(ssml_text, outfile):
 
     # Performs the text-to-speech request on the text input with the selected
     # voice parameters and audio file type
-    response = client.synthesize_speech(synthesis_input, voice, audio_config)
+    response = client.synthesize_speech(request = {'input': synthesis_input, 'voice': voice, 'audio_config': audio_config})
 
     # Writes the synthetic audio to the output file.
     with open(outfile, "wb") as out:
