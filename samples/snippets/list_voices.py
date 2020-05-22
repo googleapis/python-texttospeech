@@ -30,7 +30,7 @@ def list_voices():
     client = texttospeech.TextToSpeechClient()
 
     # Performs the list voices request
-    voices = client.list_voices(request = {})
+    voices = client.list_voices(request={})
 
     for voice in voices.voices:
         # Display the voice's name. Example: tpc-vocoded

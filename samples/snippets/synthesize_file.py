@@ -45,7 +45,7 @@ def synthesize_text_file(text_file):
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
-    response = client.synthesize_speech(request = {'input': input_text, 'voice': voice, 'audio_config': audio_config})
+    response = client.synthesize_speech(request={'input': input_text, 'voice': voice, 'audio_config': audio_config})
 
     # The response's audio_content is binary.
     with open("output.mp3", "wb") as out:
@@ -81,7 +81,7 @@ def synthesize_ssml_file(ssml_file):
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
-    response = client.synthesize_speech(request = {'input': input_text, 'voice': voice, 'audio_config': audio_config})
+    response = client.synthesize_speech(request={'input': input_text, 'voice': voice, 'audio_config': audio_config})
 
     # The response's audio_content is binary.
     with open("output.mp3", "wb") as out:

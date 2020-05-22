@@ -15,7 +15,7 @@ import list_voices
 
 
 def test_list_voices(capsys):
-    list_voices.list_voices(request = {})
+    list_voices.list_voices(request={})
     out, err = capsys.readouterr()
 
     assert "en-US" in out
