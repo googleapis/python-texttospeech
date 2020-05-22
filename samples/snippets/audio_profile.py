@@ -32,15 +32,15 @@ def synthesize_text_with_audio_profile(text, output, effects_profile_id):
 
     client = texttospeech.TextToSpeechClient()
 
-    input_text = texttospeech.types.SynthesisInput(text=text)
+    input_text = texttospeech.SynthesisInput(text=text)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
-    voice = texttospeech.types.VoiceSelectionParams(language_code="en-US")
+    voice = texttospeech.VoiceSelectionParams(language_code="en-US")
 
     # Note: you can pass in multiple effects_profile_id. They will be applied
     # in the same order they are provided.
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3,
         effects_profile_id=[effects_profile_id],
     )

@@ -25,12 +25,11 @@ Example usage:
 def list_voices():
     """Lists the available voices."""
     from google.cloud import texttospeech
-    from google.cloud.texttospeech import enums
 
     client = texttospeech.TextToSpeechClient()
 
     # Performs the list voices request
-    voices = client.list_voices(request={})
+    voices = client.list_voices()
 
     for voice in voices.voices:
         # Display the voice's name. Example: tpc-vocoded
@@ -40,7 +39,7 @@ def list_voices():
         for language_code in voice.language_codes:
             print("Supported language: {}".format(language_code))
 
-        ssml_gender = enums.SsmlVoiceGender(voice.ssml_gender)
+        ssml_gender = texttospeech.SsmlVoiceGender(voice.ssml_gender)
 
         # Display the SSML Voice Gender
         print("SSML Voice Gender: {}".format(ssml_gender.name))

@@ -34,16 +34,16 @@ def run_quickstart():
     client = texttospeech.TextToSpeechClient()
 
     # Set the text input to be synthesized
-    synthesis_input = texttospeech.types.SynthesisInput(text="Hello, World!")
+    synthesis_input = texttospeech.SynthesisInput(text="Hello, World!")
 
     # Build the voice request, select the language code ("en-US") and the ssml
     # voice gender ("neutral")
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL
     )
 
     # Select the type of audio file you want returned
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 

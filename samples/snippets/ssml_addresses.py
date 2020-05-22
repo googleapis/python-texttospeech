@@ -41,16 +41,16 @@ def ssml_to_audio(ssml_text, outfile):
     client = texttospeech.TextToSpeechClient()
 
     # Sets the text input to be synthesized
-    synthesis_input = texttospeech.types.SynthesisInput(ssml=ssml_text)
+    synthesis_input = texttospeech.SynthesisInput(ssml=ssml_text)
 
     # Builds the voice request, selects the language code ("en-US") and
     # the SSML voice gender ("MALE")
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.MALE
     )
 
     # Selects the type of audio file to return
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 

@@ -33,15 +33,15 @@ def synthesize_text_file(text_file):
 
     with open(text_file, "r") as f:
         text = f.read()
-        input_text = texttospeech.types.SynthesisInput(text=text)
+        input_text = texttospeech.SynthesisInput(text=text)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
     )
 
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
@@ -69,15 +69,15 @@ def synthesize_ssml_file(ssml_file):
 
     with open(ssml_file, "r") as f:
         ssml = f.read()
-        input_text = texttospeech.types.SynthesisInput(ssml=ssml)
+        input_text = texttospeech.SynthesisInput(ssml=ssml)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
     )
 
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 

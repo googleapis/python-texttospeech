@@ -31,17 +31,17 @@ def synthesize_text(text):
 
     client = texttospeech.TextToSpeechClient()
 
-    input_text = texttospeech.types.SynthesisInput(text=text)
+    input_text = texttospeech.SynthesisInput(text=text)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US",
         name="en-US-Standard-C",
         ssml_gender=texttospeech.SsmlVoiceGender.FEMALE,
     )
 
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
@@ -69,17 +69,17 @@ def synthesize_ssml(ssml):
 
     client = texttospeech.TextToSpeechClient()
 
-    input_text = texttospeech.types.SynthesisInput(ssml=ssml)
+    input_text = texttospeech.SynthesisInput(ssml=ssml)
 
     # Note: the voice can also be specified by name.
     # Names of voices can be retrieved with client.list_voices().
-    voice = texttospeech.types.VoiceSelectionParams(
+    voice = texttospeech.VoiceSelectionParams(
         language_code="en-US",
         name="en-US-Standard-C",
         ssml_gender=texttospeech.SsmlVoiceGender.FEMALE,
     )
 
-    audio_config = texttospeech.types.AudioConfig(
+    audio_config = texttospeech.AudioConfig(
         audio_encoding=texttospeech.AudioEncoding.MP3
     )
 
