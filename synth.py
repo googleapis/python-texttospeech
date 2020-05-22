@@ -69,6 +69,6 @@ s.replace(".flake8", "ignore = .*", "ignore = E203, E266, E501, W503, F401, F841
 # ----------------------------------------------------------------------------
 # Samples templates
 # ----------------------------------------------------------------------------
-# python.py_samples(skip_readmes=True)
+python.py_samples(skip_readmes=True)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
