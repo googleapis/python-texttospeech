@@ -1,6 +1,6 @@
 # 2.0.0 Migration Guide
 
-The 2.0.0 release of `google-cloud-texttospeech` is based on a [new code generator](https://github.com/googleapis/gapic-generator-python) and has significant differences from the previous major release. This guide explains how to modify your code to be compatible with the latest major version of the library.
+The 2.0 release of the `google-cloud-texttospeech` client is a significant upgrade based on a [next-gen code generator](https://github.com/googleapis/gapic-generator-python), and includes substantial interface changes. Existing code written for earlier versions of this library will likely require updates to use this version. This document describes the changes that have been made, and what you need to do to update your usage.
 
 If you experience issues or have questions, please file an [issue](https://github.com/googleapis/python-texttospeech/issues).
 
@@ -20,7 +20,7 @@ Methods expect request objects. We provide a script that will convert most commo
 * Install the library
 
 ```py
-python3 -m pip install google-cloud-text-to-speech
+python3 -m pip install google-cloud-texttospeech
 ```
 
 * The script `fixup_keywords.py` is shipped with the library. It expects
@@ -66,7 +66,8 @@ In `google-cloud-texttospeech<2.0.0`, arguments required by the API were positio
     ):
 ```
 
-In the 2.0.0 release, all methods have a single positional argument `request`.
+In the 2.0.0 release, all methods have a single positional argument `request`. Method docstrings indicate whether an argument is
+required or optional.
 
 Some methods have additional keyword only arguments. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/master/google/cloud/texttospeech/v1/cloud_tts.proto#L53) specified by the API producer.
 
