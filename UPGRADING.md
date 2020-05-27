@@ -51,7 +51,7 @@ voices = client.list_voices(request={"language_code": "no"})
 
 ### More Details
 
-In `google-cloud-texttospeech<2.0.0`, arguments required by the API were positional arguments and optional arguments were keyword arguments.
+In `google-cloud-texttospeech<2.0.0`, parameters required by the API were positional parameters and optional parameters were keyword parameters.
 
 **Before:**
 ```py
@@ -66,11 +66,9 @@ In `google-cloud-texttospeech<2.0.0`, arguments required by the API were positio
     ):
 ```
 
-In the 2.0.0 release, all methods have a single positional argument `request`. Method docstrings indicate whether an argument is
-required or optional.
+In the 2.0.0 release, all methods have a single positional parameter `request`. Method docstrings indicate whether a parameter is required or optional.
 
-Some methods have additional keyword only arguments. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/master/google/cloud/texttospeech/v1/cloud_tts.proto#L53) specified by the API producer.
-
+Some methods have additional keyword only parameters. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/master/google/cloud/texttospeech/v1/cloud_tts.proto#L53) specified by the API producer.
 
 
 **After:**
@@ -88,7 +86,11 @@ Some methods have additional keyword only arguments. The available parameters de
     ) -> cloud_tts.SynthesizeSpeechResponse:
 ```
 
-For this method, both of these calls are valid:
+> **NOTE:** The `request` parameter and flattened keyword parameters for the API are mutually exclusive.
+> Passing both will result in an error.
+
+
+Both of these calls are valid:
 
 ```py
 response = client.synthesize_speech(
@@ -107,6 +109,20 @@ response = client.synthesize_speech(
     audio_config=audio_config
 )
 ```
+
+This call is invalid because it mixes `request` with a keyword argument `audio_config`. Executing this code
+will result in an error.
+
+```py
+response = client.synthesize_speech(
+    request={
+        "input": input_text,
+        "voice": voice,
+    },
+    audio_config=audio_config
+)
+```
+
 
 
 ## Enums and Types
