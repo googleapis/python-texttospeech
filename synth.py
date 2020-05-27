@@ -44,8 +44,7 @@ s.replace(
 # Add templated files
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
-    unit_cov_level=85,
-    cov_level=85,
+    cov_level=100,
     samples=True,
     unit_test_python_versions=["3.6", "3.7", "3.8"],
     system_test_python_versions=["3.7"],
