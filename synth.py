@@ -43,28 +43,14 @@ s.replace(
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
-templated_files = common.py_library(unit_cov_level=85, cov_level=85, samples=True)
+templated_files = common.py_library(
+    unit_cov_level=85,
+    cov_level=85,
+    samples=True,
+    unit_test_python_versions=["3.6", "3.7", "3.8"],
+    system_test_python_versions=["3.7"],
+)
 s.move(templated_files)
-
-# Modifications for microgenerator code
-s.replace("noxfile.py",
-"""if os\.path\.exists\("samples"\):
-    BLACK_PATHS\.append\("samples"\)""",
-"")
-
-s.replace("noxfile.py",
-"""python=\["2\.7", """,
-"""python=[""")
-
-s.replace("noxfile.py",
-"""python=\["3\.5", """,
-"""python=[""")
-
-# Expand flake errors permitted to accomodate the Microgenerator
-# TODO: remove extra error codes once issues below are resolved
-# F401: https://github.com/googleapis/gapic-generator-python/issues/324
-# F841: local variable 'client'/'response' is assigned to but never use
-s.replace(".flake8", "ignore = .*", "ignore = E203, E266, E501, W503, F401, F841")
 
 # ----------------------------------------------------------------------------
 # Samples templates

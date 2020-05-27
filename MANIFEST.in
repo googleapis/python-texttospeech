@@ -21,5 +21,5 @@ recursive-include tests *
 global-exclude *.py[co]
 global-exclude __pycache__
 
-# Extras for samples
+# Exclude scripts for samples readmegen
 prune scripts/readme-gen
