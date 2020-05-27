@@ -27,6 +27,18 @@ v1beta1 API Reference
     Client (v1beta1) <texttospeech_v1beta1/services>
     Types (v1beta1) <texttospeech_v1beta1/types>
 
+
+Migration Guide
+---------------
+
+See the guide below for instructions on migrating to the 2.x release of this library.
+
+.. toctree::
+    :maxdepth: 2
+
+    UPGRADING
+
+
 Changelog
 ---------
 

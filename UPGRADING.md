@@ -1,58 +1,134 @@
+# 2.0.0 Migration Guide
+
+The 2.0.0 release of `google-cloud-texttospeech` is based on a [new code generator](https://github.com/googleapis/gapic-generator-python) and has significant differences from the previous major release. This guide explains how to modify your code to be compatible with the latest major version of the library.
+
+If you experience issues or have questions, please file an [issue](https://github.com/googleapis/python-texttospeech/issues).
+
+## Supported Python Versions
+
+> **WARNING**: Breaking change
+
+The 2.0.0 release requires Python 3.6+.
 
 
-<!-- WIP, to be moved to google-cloud-python repository --->
+## Method Calls
 
-# Method Calls
+> **WARNING**: Breaking change
 
-Methods now expect request objects. We provide a script that will convert most common cases automatically. 
+Methods expect request objects. We provide a script that will convert most common use cases.
 
-1. Install the library
+* Install the library
 
 ```py
 python3 -m pip install google-cloud-text-to-speech
 ```
 
-2. `fixup_keywords.py` is shipped with the library. The script expects
+* The script `fixup_keywords.py` is shipped with the library. It expects
 an input directory (with the code to convert) and an empty destination directory.
 
 ```sh
 $ fixup_keywords.py --input-directory .samples/ --output-directory samples/
 ```
 
-Before:
+**Before:**
 ```py
 from google.cloud import texttospeech
 
 client = texttospeech.TextToSpeechClient()
+
 voices = client.list_voices(language_code="no")
 ```
 
-After:
+
+**After:**
 ```py
 from google.cloud import texttospeech
 
 client = texttospeech.TextToSpeechClient()
+
 voices = client.list_voices(request={"language_code": "no"})
 ```
 
-# Location of Types and Enums
+### More Details
 
-Types and Enums are available at the top level.
+In `google-cloud-texttospeech<2.0.0`, arguments required by the API were positional arguments and optional arguments were keyword arguments.
 
-Before:
+**Before:**
 ```py
+    def synthesize_speech(
+        self,
+        input_,
+        voice,
+        audio_config,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+```
 
-from google.cloud import texttospeech
+In the 2.0.0 release, all methods have a single positional argument `request`.
 
-voice = texttospeech.types.VoiceSelectionParams(language_code="en-US")
-encoding = texttospeech.enums.AudioEncoding.MP3
+Some methods have additional keyword only arguments. The available parameters depend on the [`google.api.method_signature` annotation](https://github.com/googleapis/googleapis/blob/master/google/cloud/texttospeech/v1/cloud_tts.proto#L53) specified by the API producer.
+
+
+
+**After:**
+```py
+    def synthesize_speech(
+        self,
+        request: cloud_tts.SynthesizeSpeechRequest = None,
+        *,
+        input: cloud_tts.SynthesisInput = None,
+        voice: cloud_tts.VoiceSelectionParams = None,
+        audio_config: cloud_tts.AudioConfig = None,
+        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        timeout: float = None,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> cloud_tts.SynthesizeSpeechResponse:
+```
+
+For this method, both of these calls are valid:
+
+```py
+response = client.synthesize_speech(
+    request={
+        "input": input_text,
+        "voice": voice,
+        "audio_config": audio_config
+    }
+)
+```
+
+```py
+response = client.synthesize_speech(
+    input=input_text,
+    voice=voice,
+    audio_config=audio_config
+)
 ```
 
 
-After:
+## Enums and Types
+
+
+> **WARNING**: Breaking change
+
+The submodules `enums` and `types` have been removed.
+
+**Before:**
+```py
+
+from google.cloud import texttospeech
+
+encoding = texttospeech.enums.AudioEncoding.MP3
+voice = texttospeech.types.VoiceSelectionParams(language_code="en-US")
+```
+
+
+**After:**
 ```py
 from google.cloud import texttospeech
 
-voice = texttospeech.VoiceSelectionParams(language_code="en-US")
 encoding = texttospeech.AudioEncoding.MP3
+voice = texttospeech.VoiceSelectionParams(language_code="en-US")
 ```
