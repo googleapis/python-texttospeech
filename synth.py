@@ -56,4 +56,8 @@ s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .
 # ----------------------------------------------------------------------------
 python.py_samples(skip_readmes=True)
 
+# Extra lint ignores for microgenerator tests
+# TODO: Remove when https://github.com/googleapis/gapic-generator-python/issues/425 is closed
+s.replace(".flake8", "(ignore = .*)", "\g<1>, F401, F841")
+
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
