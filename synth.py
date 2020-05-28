@@ -30,9 +30,6 @@ for version in versions:
     library = gapic.py_library(service="texttospeech", version=version,)
     s.move(library, excludes=["setup.py", "docs/index.rst"])
 
-# Fix bad docstrings.
-s.replace("**/gapic/*_client.py", r'\\"(.+?)-\*\\"', r'"\1-\\*"')
-
 # Sphinx interprets `*` as emphasis
 s.replace(
     ["google/cloud/**/client.py", "google/cloud/**/cloud_tts.py"],
