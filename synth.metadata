@@ -3,8 +3,8 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:googleapis/python-texttospeech",
-        "sha": "b54229fcc2bd1460c3f7f8207d125fd1379e56b1"
+        "remote": "https://github.com/googleapis/python-texttospeech.git",
+        "sha": "65f903b00395716fad272ca4fc973755735e1e20"
       }
     },
     {
@@ -13,6 +13,20 @@
         "remote": "https://github.com/googleapis/googleapis.git",
         "sha": "89e89786896d256c70f43e68a975470c4f4f220e",
         "internalRef": "311239362"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "cb3c683e958a4b5c016bb3734436fc1cb887eb7b"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "cb3c683e958a4b5c016bb3734436fc1cb887eb7b"
       }
     }
   ],

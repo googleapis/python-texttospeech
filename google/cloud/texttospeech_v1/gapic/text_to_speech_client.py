@@ -203,11 +203,11 @@ class TextToSpeechClient(object):
             language_code (str): Optional. Recommended.
                 `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__ language tag.
                 If specified, the ListVoices call will only return voices that can be
-                used to synthesize this language\_code. E.g. when specifying "en-NZ",
-                you will get supported "en-*" voices; when specifying "no", you will get
+                used to synthesize this language_code. E.g. when specifying "en-NZ", you
+                will get supported "en-*" voices; when specifying "no", you will get
                 supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices;
                 specifying "zh" will also get supported "cmn-*" voices; specifying
-                "zh-hk" will also get supported "yue-\*" voices.
+                "zh-hk" will also get supported "yue-*" voices.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
