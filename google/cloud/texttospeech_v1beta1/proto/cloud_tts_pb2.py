@@ -693,10 +693,8 @@ ListVoicesRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _LISTVOICESREQUEST,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
-        "__doc__": """The top-level message sent by the client for the
-  ``ListVoices`` method.
-  
-  
+        "__doc__": """The top-level message sent by the client for the ``ListVoices``
+  method.
   Attributes:
       language_code:
           Optional. Recommended. `BCP-47 <https://www.rfc-
@@ -720,10 +718,7 @@ ListVoicesResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _LISTVOICESRESPONSE,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
-        "__doc__": """The message returned to the client by the ``ListVoices``
-  method.
-  
-  
+        "__doc__": """The message returned to the client by the ``ListVoices`` method.
   Attributes:
       voices:
           The list of voices.
@@ -740,8 +735,6 @@ Voice = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _VOICE,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
         "__doc__": """Description of a voice supported by the TTS service.
-  
-  
   Attributes:
       language_codes:
           The languages that this voice supports, expressed as `BCP-47
@@ -767,8 +760,6 @@ SynthesizeSpeechRequest = _reflection.GeneratedProtocolMessageType(
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
         "__doc__": """The top-level message sent by the client for the ``SynthesizeSpeech``
   method.
-  
-  
   Attributes:
       input:
           Required. The Synthesizer requires either plain text or SSML
@@ -789,12 +780,10 @@ SynthesisInput = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _SYNTHESISINPUT,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
-        "__doc__": """Contains text input to be synthesized. Either ``text`` or
-  ``ssml`` must be supplied. Supplying both or neither returns
-  [google.rpc.Code.INVALID_ARGUMENT][]. The input size is limited to 5000
-  characters.
-  
-  
+        "__doc__": """Contains text input to be synthesized. Either ``text`` or ``ssml``
+  must be supplied. Supplying both or neither returns
+  [google.rpc.Code.INVALID_ARGUMENT][]. The input size is limited to
+  5000 characters.
   Attributes:
       input_source:
           The input source, which is either plain text or SSML.
@@ -818,8 +807,6 @@ VoiceSelectionParams = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _VOICESELECTIONPARAMS,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
         "__doc__": """Description of which voice to use for a synthesis request.
-  
-  
   Attributes:
       language_code:
           Required. The language (and potentially also the region) of
@@ -859,8 +846,6 @@ AudioConfig = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _AUDIOCONFIG,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
         "__doc__": """Description of audio data to be synthesized.
-  
-  
   Attributes:
       audio_encoding:
           Required. The format of the audio byte stream.
@@ -913,10 +898,7 @@ SynthesizeSpeechResponse = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _SYNTHESIZESPEECHRESPONSE,
         "__module__": "google.cloud.texttospeech_v1beta1.proto.cloud_tts_pb2",
-        "__doc__": """The message returned to the client by the
-  ``SynthesizeSpeech`` method.
-  
-  
+        "__doc__": """The message returned to the client by the ``SynthesizeSpeech`` method.
   Attributes:
       audio_content:
           The audio data bytes encoded as specified in the request,
