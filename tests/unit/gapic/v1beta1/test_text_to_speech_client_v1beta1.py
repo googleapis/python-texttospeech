@@ -60,37 +60,6 @@ class CustomException(Exception):
 
 
 class TestTextToSpeechClient(object):
-    def test_list_voices(self):
-        # Setup Expected Response
-        expected_response = {}
-        expected_response = cloud_tts_pb2.ListVoicesResponse(**expected_response)
-
-        # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = texttospeech_v1beta1.TextToSpeechClient()
-
-        response = client.list_voices()
-        assert expected_response == response
-
-        assert len(channel.requests) == 1
-        expected_request = cloud_tts_pb2.ListVoicesRequest()
-        actual_request = channel.requests[0][1]
-        assert expected_request == actual_request
-
-    def test_list_voices_exception(self):
-        # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
-        with patch as create_channel:
-            create_channel.return_value = channel
-            client = texttospeech_v1beta1.TextToSpeechClient()
-
-        with pytest.raises(CustomException):
-            client.list_voices()
-
     def test_synthesize_speech(self):
         # Setup Expected Response
         audio_content = b"16"
@@ -134,3 +103,34 @@ class TestTextToSpeechClient(object):
 
         with pytest.raises(CustomException):
             client.synthesize_speech(input_, voice, audio_config)
+
+    def test_list_voices(self):
+        # Setup Expected Response
+        expected_response = {}
+        expected_response = cloud_tts_pb2.ListVoicesResponse(**expected_response)
+
+        # Mock the API response
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = texttospeech_v1beta1.TextToSpeechClient()
+
+        response = client.list_voices()
+        assert expected_response == response
+
+        assert len(channel.requests) == 1
+        expected_request = cloud_tts_pb2.ListVoicesRequest()
+        actual_request = channel.requests[0][1]
+        assert expected_request == actual_request
+
+    def test_list_voices_exception(self):
+        # Mock the API response
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        with patch as create_channel:
+            create_channel.return_value = channel
+            client = texttospeech_v1beta1.TextToSpeechClient()
+
+        with pytest.raises(CustomException):
+            client.list_voices()

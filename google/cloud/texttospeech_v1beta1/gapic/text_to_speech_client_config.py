@@ -17,14 +17,14 @@ config = {
                 }
             },
             "methods": {
-                "ListVoices": {
+                "SynthesizeSpeech": {
                     "timeout_millis": 60000,
                     "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
-                "SynthesizeSpeech": {
+                "ListVoices": {
                     "timeout_millis": 60000,
-                    "retry_codes_name": "non_idempotent",
+                    "retry_codes_name": "idempotent",
                     "retry_params_name": "default",
                 },
             },

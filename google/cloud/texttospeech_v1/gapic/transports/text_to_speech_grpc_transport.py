@@ -108,19 +108,6 @@ class TextToSpeechGrpcTransport(object):
         return self._channel
 
     @property
-    def list_voices(self):
-        """Return the gRPC stub for :meth:`TextToSpeechClient.list_voices`.
-
-        Returns a list of Voice supported for synthesis.
-
-        Returns:
-            Callable: A callable which accepts the appropriate
-                deserialized request object and returns a
-                deserialized response object.
-        """
-        return self._stubs["text_to_speech_stub"].ListVoices
-
-    @property
     def synthesize_speech(self):
         """Return the gRPC stub for :meth:`TextToSpeechClient.synthesize_speech`.
 
@@ -133,3 +120,16 @@ class TextToSpeechGrpcTransport(object):
                 deserialized response object.
         """
         return self._stubs["text_to_speech_stub"].SynthesizeSpeech
+
+    @property
+    def list_voices(self):
+        """Return the gRPC stub for :meth:`TextToSpeechClient.list_voices`.
+
+        Returns a list of Voice supported for synthesis.
+
+        Returns:
+            Callable: A callable which accepts the appropriate
+                deserialized request object and returns a
+                deserialized response object.
+        """
+        return self._stubs["text_to_speech_stub"].ListVoices

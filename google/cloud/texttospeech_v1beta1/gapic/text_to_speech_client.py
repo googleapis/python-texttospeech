@@ -184,67 +184,6 @@ class TextToSpeechClient(object):
         self._inner_api_calls = {}
 
     # Service calls
-    def list_voices(
-        self,
-        language_code=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
-        """
-        Returns a list of Voice supported for synthesis.
-
-        Example:
-            >>> from google.cloud import texttospeech_v1beta1
-            >>>
-            >>> client = texttospeech_v1beta1.TextToSpeechClient()
-            >>>
-            >>> response = client.list_voices()
-
-        Args:
-            language_code (str): Optional. Recommended.
-                `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__ language tag.
-                If specified, the ListVoices call will only return voices that can be
-                used to synthesize this language_code. E.g. when specifying "en-NZ", you
-                will get supported "en-*" voices; when specifying "no", you will get
-                supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices;
-                specifying "zh" will also get supported "cmn-*" voices; specifying
-                "zh-hk" will also get supported "yue-*" voices.
-            retry (Optional[google.api_core.retry.Retry]):  A retry object used
-                to retry requests. If ``None`` is specified, requests will
-                be retried using a default configuration.
-            timeout (Optional[float]): The amount of time, in seconds, to wait
-                for the request to complete. Note that if ``retry`` is
-                specified, the timeout applies to each individual attempt.
-            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
-                that is provided to the method.
-
-        Returns:
-            A :class:`~google.cloud.texttospeech_v1beta1.types.ListVoicesResponse` instance.
-
-        Raises:
-            google.api_core.exceptions.GoogleAPICallError: If the request
-                    failed for any reason.
-            google.api_core.exceptions.RetryError: If the request failed due
-                    to a retryable error and retry attempts failed.
-            ValueError: If the parameters are invalid.
-        """
-        # Wrap the transport method to add retry and timeout logic.
-        if "list_voices" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_voices"
-            ] = google.api_core.gapic_v1.method.wrap_method(
-                self.transport.list_voices,
-                default_retry=self._method_configs["ListVoices"].retry,
-                default_timeout=self._method_configs["ListVoices"].timeout,
-                client_info=self._client_info,
-            )
-
-        request = cloud_tts_pb2.ListVoicesRequest(language_code=language_code)
-        return self._inner_api_calls["list_voices"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
-
     def synthesize_speech(
         self,
         input_,
@@ -321,5 +260,66 @@ class TextToSpeechClient(object):
             input=input_, voice=voice, audio_config=audio_config
         )
         return self._inner_api_calls["synthesize_speech"](
+            request, retry=retry, timeout=timeout, metadata=metadata
+        )
+
+    def list_voices(
+        self,
+        language_code=None,
+        retry=google.api_core.gapic_v1.method.DEFAULT,
+        timeout=google.api_core.gapic_v1.method.DEFAULT,
+        metadata=None,
+    ):
+        """
+        Returns a list of Voice supported for synthesis.
+
+        Example:
+            >>> from google.cloud import texttospeech_v1beta1
+            >>>
+            >>> client = texttospeech_v1beta1.TextToSpeechClient()
+            >>>
+            >>> response = client.list_voices()
+
+        Args:
+            language_code (str): Optional. Recommended.
+                `BCP-47 <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>`__ language tag.
+                If specified, the ListVoices call will only return voices that can be
+                used to synthesize this language_code. E.g. when specifying "en-NZ", you
+                will get supported "en-*" voices; when specifying "no", you will get
+                supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices;
+                specifying "zh" will also get supported "cmn-*" voices; specifying
+                "zh-hk" will also get supported "yue-*" voices.
+            retry (Optional[google.api_core.retry.Retry]):  A retry object used
+                to retry requests. If ``None`` is specified, requests will
+                be retried using a default configuration.
+            timeout (Optional[float]): The amount of time, in seconds, to wait
+                for the request to complete. Note that if ``retry`` is
+                specified, the timeout applies to each individual attempt.
+            metadata (Optional[Sequence[Tuple[str, str]]]): Additional metadata
+                that is provided to the method.
+
+        Returns:
+            A :class:`~google.cloud.texttospeech_v1beta1.types.ListVoicesResponse` instance.
+
+        Raises:
+            google.api_core.exceptions.GoogleAPICallError: If the request
+                    failed for any reason.
+            google.api_core.exceptions.RetryError: If the request failed due
+                    to a retryable error and retry attempts failed.
+            ValueError: If the parameters are invalid.
+        """
+        # Wrap the transport method to add retry and timeout logic.
+        if "list_voices" not in self._inner_api_calls:
+            self._inner_api_calls[
+                "list_voices"
+            ] = google.api_core.gapic_v1.method.wrap_method(
+                self.transport.list_voices,
+                default_retry=self._method_configs["ListVoices"].retry,
+                default_timeout=self._method_configs["ListVoices"].timeout,
+                client_info=self._client_info,
+            )
+
+        request = cloud_tts_pb2.ListVoicesRequest(language_code=language_code)
+        return self._inner_api_calls["list_voices"](
             request, retry=retry, timeout=timeout, metadata=metadata
         )
