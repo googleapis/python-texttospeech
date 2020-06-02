@@ -34,6 +34,7 @@ class TextToSpeechTransport(metaclass=abc.ABCMeta):
         *,
         host: str = "texttospeech.googleapis.com",
         credentials: credentials.Credentials = None,
+        quota_project_id: str = None,
     ) -> None:
         """Instantiate the transport.
 
@@ -44,6 +45,7 @@ class TextToSpeechTransport(metaclass=abc.ABCMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
+            quota_project_id (str): Project to use for quota and billing.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
@@ -57,6 +59,10 @@ class TextToSpeechTransport(metaclass=abc.ABCMeta):
 
         # Save the credentials.
         self._credentials = credentials
+
+        # Save the quota project
+        self._quota_project_id = quota_project_id
+
 
     @property
     def list_voices(

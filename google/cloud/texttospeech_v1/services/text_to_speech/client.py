@@ -172,7 +172,8 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
             # Don't trigger mTLS if we get an empty ClientOptions.
             Transport = type(self).get_transport_class(transport)
             self._transport = Transport(
-                credentials=credentials, host=self.DEFAULT_ENDPOINT
+                credentials=credentials, host=self.DEFAULT_ENDPOINT,
+                quota_project_id=client_options.quota_project_id ,
             )
         else:
             # We have a non-empty ClientOptions. If client_cert_source is
@@ -198,6 +199,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
                 host=api_endpoint,
                 api_mtls_endpoint=api_mtls_endpoint,
                 client_cert_source=client_options.client_cert_source,
+                quota_project_id=client_options.quota_project_id ,
             )
 
     def list_voices(

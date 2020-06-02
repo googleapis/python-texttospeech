@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-from typing import Callable, Dict, Tuple
+from typing import Callable, Dict, Sequence, Tuple
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.auth import credentials  # type: ignore
@@ -47,9 +47,10 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
         *,
         host: str = "texttospeech.googleapis.com",
         credentials: credentials.Credentials = None,
+        quota_project_id: str = None,
         channel: grpc.Channel = None,
         api_mtls_endpoint: str = None,
-        client_cert_source: Callable[[], Tuple[bytes, bytes]] = None
+        client_cert_source: Callable[[], Tuple[bytes, bytes]] = None,
     ) -> None:
         """Instantiate the transport.
 
@@ -60,6 +61,8 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
+                This argument is ignored if ``channel`` is provided.
+            quota_project_id: Project to use for quota and billing purposes.
                 This argument is ignored if ``channel`` is provided.
             channel (Optional[grpc.Channel]): A ``Channel`` instance through
                 which to make calls.
@@ -106,10 +109,12 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
                 credentials=credentials,
                 ssl_credentials=ssl_credentials,
                 scopes=self.AUTH_SCOPES,
+                quota_project_id=quota_project_id
             )
 
         # Run the base constructor.
-        super().__init__(host=host, credentials=credentials)
+        super().__init__(host=host, credentials=credentials, quota_project_id=quota_project_id)
+
         self._stubs = {}  # type: Dict[str, Callable]
 
     @classmethod
@@ -117,6 +122,7 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
         cls,
         host: str = "texttospeech.googleapis.com",
         credentials: credentials.Credentials = None,
+        quota_project_id: str = None,
         **kwargs
     ) -> grpc.Channel:
         """Create and return a gRPC channel object.
@@ -127,13 +133,16 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
                 credentials identify this application to the service. If
                 none are specified, the client will attempt to ascertain
                 the credentials from the environment.
+            quota_project_id (Optional[str]): The project to use for quota
+                and billing purposes. This overrides the project
+                associated with the credentials.
             kwargs (Optional[dict]): Keyword arguments, which are passed to the
                 channel creation.
         Returns:
             grpc.Channel: A gRPC channel object.
         """
         return grpc_helpers.create_channel(
-            host, credentials=credentials, scopes=cls.AUTH_SCOPES, **kwargs
+            host, credentials=credentials, scopes=cls.AUTH_SCOPES, quota_project_id=quota_project_id, **kwargs
         )
 
     @property
@@ -147,7 +156,8 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
         # have one.
         if not hasattr(self, "_grpc_channel"):
             self._grpc_channel = self.create_channel(
-                self._host, credentials=self._credentials
+                self._host, credentials=self._credentials,
+                quota_project_id=self._quota_project_id,
             )
 
         # Return the channel from cache.
