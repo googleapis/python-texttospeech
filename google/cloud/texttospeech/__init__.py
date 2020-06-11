@@ -15,7 +15,6 @@
 # limitations under the License.
 #
 
-
 from google.cloud.texttospeech_v1.services.text_to_speech.client import (
     TextToSpeechClient,
 )
