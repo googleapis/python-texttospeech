@@ -66,7 +66,6 @@ def lint_setup_py(session):
 
 def default(session):
     # Install all test dependencies, then install this package in-place.
-    session.install("asyncmock", "pytest-asyncio")
     session.install("mock", "pytest", "pytest-cov")
     session.install("-e", ".")
 
@@ -130,7 +129,7 @@ def cover(session):
     test runs (not system test runs), and then erases coverage data.
     """
     session.install("coverage", "pytest-cov")
-    session.run("coverage", "report", "--show-missing", "--fail-under=100")
+    session.run("coverage", "report", "--show-missing", "--fail-under=")
 
     session.run("coverage", "erase")
 
