@@ -49,7 +49,7 @@ class TextToSpeechClientMeta(type):
     _transport_registry["grpc"] = TextToSpeechGrpcTransport
     _transport_registry["grpc_asyncio"] = TextToSpeechGrpcAsyncIOTransport
 
-    def get_transport_class(cls, label: str = None) -> Type[TextToSpeechTransport]:
+    def get_transport_class(cls, label: str = None,) -> Type[TextToSpeechTransport]:
         """Return an appropriate transport class.
 
         Args:
@@ -269,11 +269,11 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
         rpc = gapic_v1.method.wrap_method(
-            self._transport.list_voices, default_timeout=None, client_info=_client_info
+            self._transport.list_voices, default_timeout=None, client_info=_client_info,
         )
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Done; return the response.
         return response
@@ -357,7 +357,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
         )
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Done; return the response.
         return response
@@ -366,8 +366,8 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
 try:
     _client_info = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution(
-            "google-cloud-texttospeech"
-        ).version
+            "google-cloud-texttospeech",
+        ).version,
     )
 except pkg_resources.DistributionNotFound:
     _client_info = gapic_v1.client_info.ClientInfo()

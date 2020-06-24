@@ -230,7 +230,7 @@ def test_text_to_speech_client_client_options_from_dict():
 
 def test_list_voices(transport: str = "grpc"):
     client = TextToSpeechClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport
+        credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -257,7 +257,7 @@ def test_list_voices(transport: str = "grpc"):
 @pytest.mark.asyncio
 async def test_list_voices_async(transport: str = "grpc_asyncio"):
     client = TextToSpeechAsyncClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport
+        credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -286,7 +286,7 @@ async def test_list_voices_async(transport: str = "grpc_asyncio"):
 
 
 def test_list_voices_flattened():
-    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client._transport.list_voices), "__call__") as call:
@@ -295,7 +295,7 @@ def test_list_voices_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        client.list_voices(language_code="language_code_value")
+        client.list_voices(language_code="language_code_value",)
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -305,19 +305,19 @@ def test_list_voices_flattened():
 
 
 def test_list_voices_flattened_error():
-    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials(),)
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         client.list_voices(
-            cloud_tts.ListVoicesRequest(), language_code="language_code_value"
+            cloud_tts.ListVoicesRequest(), language_code="language_code_value",
         )
 
 
 @pytest.mark.asyncio
 async def test_list_voices_flattened_async():
-    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -331,7 +331,7 @@ async def test_list_voices_flattened_async():
         )
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = await client.list_voices(language_code="language_code_value")
+        response = await client.list_voices(language_code="language_code_value",)
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -342,19 +342,19 @@ async def test_list_voices_flattened_async():
 
 @pytest.mark.asyncio
 async def test_list_voices_flattened_error_async():
-    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials(),)
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         await client.list_voices(
-            cloud_tts.ListVoicesRequest(), language_code="language_code_value"
+            cloud_tts.ListVoicesRequest(), language_code="language_code_value",
         )
 
 
 def test_synthesize_speech(transport: str = "grpc"):
     client = TextToSpeechClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport
+        credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -367,7 +367,7 @@ def test_synthesize_speech(transport: str = "grpc"):
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = cloud_tts.SynthesizeSpeechResponse(
-            audio_content=b"audio_content_blob"
+            audio_content=b"audio_content_blob",
         )
 
         response = client.synthesize_speech(request)
@@ -386,7 +386,7 @@ def test_synthesize_speech(transport: str = "grpc"):
 @pytest.mark.asyncio
 async def test_synthesize_speech_async(transport: str = "grpc_asyncio"):
     client = TextToSpeechAsyncClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport
+        credentials=credentials.AnonymousCredentials(), transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -399,7 +399,7 @@ async def test_synthesize_speech_async(transport: str = "grpc_asyncio"):
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
-            cloud_tts.SynthesizeSpeechResponse(audio_content=b"audio_content_blob")
+            cloud_tts.SynthesizeSpeechResponse(audio_content=b"audio_content_blob",)
         )
 
         response = await client.synthesize_speech(request)
@@ -416,7 +416,7 @@ async def test_synthesize_speech_async(transport: str = "grpc_asyncio"):
 
 
 def test_synthesize_speech_flattened():
-    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -449,7 +449,7 @@ def test_synthesize_speech_flattened():
 
 
 def test_synthesize_speech_flattened_error():
-    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials(),)
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -466,7 +466,7 @@ def test_synthesize_speech_flattened_error():
 
 @pytest.mark.asyncio
 async def test_synthesize_speech_flattened_async():
-    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials(),)
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -503,7 +503,7 @@ async def test_synthesize_speech_flattened_async():
 
 @pytest.mark.asyncio
 async def test_synthesize_speech_flattened_error_async():
-    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials())
+    client = TextToSpeechAsyncClient(credentials=credentials.AnonymousCredentials(),)
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -521,18 +521,18 @@ async def test_synthesize_speech_flattened_error_async():
 def test_credentials_transport_error():
     # It is an error to provide credentials and a transport instance.
     transport = transports.TextToSpeechGrpcTransport(
-        credentials=credentials.AnonymousCredentials()
+        credentials=credentials.AnonymousCredentials(),
     )
     with pytest.raises(ValueError):
         client = TextToSpeechClient(
-            credentials=credentials.AnonymousCredentials(), transport=transport
+            credentials=credentials.AnonymousCredentials(), transport=transport,
         )
 
 
 def test_transport_instance():
     # A client may be instantiated with a custom transport instance.
     transport = transports.TextToSpeechGrpcTransport(
-        credentials=credentials.AnonymousCredentials()
+        credentials=credentials.AnonymousCredentials(),
     )
     client = TextToSpeechClient(transport=transport)
     assert client._transport is transport
@@ -541,13 +541,13 @@ def test_transport_instance():
 def test_transport_get_channel():
     # A client may be instantiated with a custom transport instance.
     transport = transports.TextToSpeechGrpcTransport(
-        credentials=credentials.AnonymousCredentials()
+        credentials=credentials.AnonymousCredentials(),
     )
     channel = transport.grpc_channel
     assert channel
 
     transport = transports.TextToSpeechGrpcAsyncIOTransport(
-        credentials=credentials.AnonymousCredentials()
+        credentials=credentials.AnonymousCredentials(),
     )
     channel = transport.grpc_channel
     assert channel
@@ -555,19 +555,22 @@ def test_transport_get_channel():
 
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
-    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials())
-    assert isinstance(client._transport, transports.TextToSpeechGrpcTransport)
+    client = TextToSpeechClient(credentials=credentials.AnonymousCredentials(),)
+    assert isinstance(client._transport, transports.TextToSpeechGrpcTransport,)
 
 
 def test_text_to_speech_base_transport():
     # Instantiate the base transport.
     transport = transports.TextToSpeechTransport(
-        credentials=credentials.AnonymousCredentials()
+        credentials=credentials.AnonymousCredentials(),
     )
 
     # Every method on the transport should just blindly
     # raise NotImplementedError.
-    methods = ("list_voices", "synthesize_speech")
+    methods = (
+        "list_voices",
+        "synthesize_speech",
+    )
     for method in methods:
         with pytest.raises(NotImplementedError):
             getattr(transport, method)(request=object())
