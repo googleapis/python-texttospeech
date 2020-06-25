@@ -32,7 +32,7 @@ for version in versions:
 
 # Sphinx interprets `*` as emphasis
 s.replace(
-    ["google/cloud/**/*_client.py", "google/cloud/**/cloud_tts.py"],
+    ["google/cloud/**/client.py", "google/cloud/**/cloud_tts.py"],
     "((en)|(no)|(nb)(cmn)|(yue))-\*",
     "\g<1>-\*",
 )
