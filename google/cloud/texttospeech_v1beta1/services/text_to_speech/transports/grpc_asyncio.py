@@ -156,7 +156,7 @@ class TextToSpeechGrpcAsyncIOTransport(TextToSpeechTransport):
         # have one.
         if not hasattr(self, "_grpc_channel"):
             self._grpc_channel = self.create_channel(
-                self._host, credentials=self._credentials
+                self._host, credentials=self._credentials,
             )
 
         # Return the channel from cache.
@@ -164,7 +164,7 @@ class TextToSpeechGrpcAsyncIOTransport(TextToSpeechTransport):
 
     @property
     def list_voices(
-        self
+        self,
     ) -> Callable[
         [cloud_tts.ListVoicesRequest], Awaitable[cloud_tts.ListVoicesResponse]
     ]:
@@ -192,7 +192,7 @@ class TextToSpeechGrpcAsyncIOTransport(TextToSpeechTransport):
 
     @property
     def synthesize_speech(
-        self
+        self,
     ) -> Callable[
         [cloud_tts.SynthesizeSpeechRequest],
         Awaitable[cloud_tts.SynthesizeSpeechResponse],

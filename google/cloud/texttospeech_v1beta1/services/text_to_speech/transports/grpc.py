@@ -158,7 +158,7 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
         # have one.
         if not hasattr(self, "_grpc_channel"):
             self._grpc_channel = self.create_channel(
-                self._host, credentials=self._credentials
+                self._host, credentials=self._credentials,
             )
 
         # Return the channel from cache.
@@ -166,7 +166,7 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
 
     @property
     def list_voices(
-        self
+        self,
     ) -> Callable[[cloud_tts.ListVoicesRequest], cloud_tts.ListVoicesResponse]:
         r"""Return a callable for the list voices method over gRPC.
 
@@ -192,7 +192,7 @@ class TextToSpeechGrpcTransport(TextToSpeechTransport):
 
     @property
     def synthesize_speech(
-        self
+        self,
     ) -> Callable[
         [cloud_tts.SynthesizeSpeechRequest], cloud_tts.SynthesizeSpeechResponse
     ]:

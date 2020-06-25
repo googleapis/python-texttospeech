@@ -61,7 +61,7 @@ class TextToSpeechTransport(abc.ABC):
 
     @property
     def list_voices(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_tts.ListVoicesRequest],
         typing.Union[
@@ -72,7 +72,7 @@ class TextToSpeechTransport(abc.ABC):
 
     @property
     def synthesize_speech(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_tts.SynthesizeSpeechRequest],
         typing.Union[
