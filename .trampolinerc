@@ -45,7 +45,7 @@ if [[ -z "${TRAMPOLINE_IMAGE:-}" ]]; then
 fi
 
 if [[ -z "${TRAMPOLINE_DOCKERFILE:-}" ]]; then
-    TRAMPOLINE_DOCKERFILE=""
+    TRAMPOLINE_DOCKERFILE=".kokoro/docker/docs/Dockerfile"
 fi
 
 if [[ -z "${TRAMPOLINE_BUILD_FILE:-}" ]]; then
