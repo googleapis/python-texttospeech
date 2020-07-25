@@ -18,8 +18,6 @@ set -eo pipefail
 # Disable buffering, so that the logs stream through.
 export PYTHONUNBUFFERED=1
 
-cd "${PROJECT_ROOT:-github/python-texttospeech}"
-
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # Install nox
