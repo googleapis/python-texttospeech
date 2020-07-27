@@ -33,11 +33,7 @@ fi
 
 # Define the default value if it makes sense.
 if [[ -z "${TRAMPOLINE_IMAGE_UPLOAD:-}" ]]; then
-    # We use Trampoline V2 only for `docs` job.
-    # Upload the docker image for faster future builds on Kokoro.
-    if [[ "${RUNNING_IN_CI:-}" == "true" ]]; then
-        TRAMPOLINE_IMAGE_UPLOAD="true"
-    fi
+    TRAMPOLINE_IMAGE_UPLOAD=""
 fi
 
 if [[ -z "${TRAMPOLINE_IMAGE:-}" ]]; then
@@ -45,7 +41,7 @@ if [[ -z "${TRAMPOLINE_IMAGE:-}" ]]; then
 fi
 
 if [[ -z "${TRAMPOLINE_DOCKERFILE:-}" ]]; then
-    TRAMPOLINE_DOCKERFILE=".kokoro/docker/docs/Dockerfile"
+    TRAMPOLINE_DOCKERFILE=""
 fi
 
 if [[ -z "${TRAMPOLINE_BUILD_FILE:-}" ]]; then
