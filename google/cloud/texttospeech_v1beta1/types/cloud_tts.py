@@ -31,6 +31,7 @@ __protobuf__ = proto.module(
         "VoiceSelectionParams",
         "AudioConfig",
         "SynthesizeSpeechResponse",
+        "Timepoint",
     },
 )
 
@@ -52,7 +53,9 @@ class AudioEncoding(proto.Enum):
     AUDIO_ENCODING_UNSPECIFIED = 0
     LINEAR16 = 1
     MP3 = 2
+    MP3_64_KBPS = 4
     OGG_OPUS = 3
+    MULAW = 5
 
 
 class ListVoicesRequest(proto.Message):
@@ -128,13 +131,25 @@ class SynthesizeSpeechRequest(proto.Message):
         audio_config (~.cloud_tts.AudioConfig):
             Required. The configuration of the
             synthesized audio.
+        enable_time_pointing (Sequence[~.cloud_tts.SynthesizeSpeechRequest.TimepointType]):
+            Whether and what timepoints should be
+            returned in the response.
     """
+
+    class TimepointType(proto.Enum):
+        r"""The type of timepoint information that is returned in the
+        response.
+        """
+        TIMEPOINT_TYPE_UNSPECIFIED = 0
+        SSML_MARK = 1
 
     input = proto.Field(proto.MESSAGE, number=1, message="SynthesisInput")
 
     voice = proto.Field(proto.MESSAGE, number=2, message="VoiceSelectionParams")
 
     audio_config = proto.Field(proto.MESSAGE, number=3, message="AudioConfig")
+
+    enable_time_pointing = proto.RepeatedField(proto.ENUM, number=4, enum=TimepointType)
 
 
 class SynthesisInput(proto.Message):
@@ -270,9 +285,37 @@ class SynthesizeSpeechResponse(proto.Message):
             include the WAV header. Note: as with all bytes fields,
             protobuffers use a pure binary representation, whereas JSON
             representations use base64.
+        timepoints (Sequence[~.cloud_tts.Timepoint]):
+            A link between a position in the original request input and
+            a corresponding time in the output audio. It's only
+            supported via ``<mark>`` of SSML input.
+        audio_config (~.cloud_tts.AudioConfig):
+            The audio metadata of ``audio_content``.
     """
 
     audio_content = proto.Field(proto.BYTES, number=1)
+
+    timepoints = proto.RepeatedField(proto.MESSAGE, number=2, message="Timepoint")
+
+    audio_config = proto.Field(proto.MESSAGE, number=4, message=AudioConfig)
+
+
+class Timepoint(proto.Message):
+    r"""This contains a mapping between a certain point in the input
+    text and a corresponding time in the output audio.
+
+    Attributes:
+        mark_name (str):
+            Timepoint name as received from the client within ``<mark>``
+            tag.
+        time_seconds (float):
+            Time offset in seconds from the start of the
+            synthesized audio.
+    """
+
+    mark_name = proto.Field(proto.STRING, number=4)
+
+    time_seconds = proto.Field(proto.DOUBLE, number=3)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
