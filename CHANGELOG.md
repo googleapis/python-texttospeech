@@ -4,6 +4,16 @@
 
 [1]: https://pypi.org/project/google-cloud-texttospeech/#history
 
+### [2.1.1](https://www.github.com/googleapis/python-texttospeech/compare/v2.1.0...v2.1.1) (2020-07-31)
+
+
+### Documentation
+
+* add docs-presubmit Kokoro job ([#72](https://www.github.com/googleapis/python-texttospeech/issues/72)) ([c42e5a9](https://www.github.com/googleapis/python-texttospeech/commit/c42e5a9bcb7f850473197dd5d36ca5fe2ca1dc54))
+* create docfx yaml files and upload them ([#67](https://www.github.com/googleapis/python-texttospeech/issues/67)) ([456786f](https://www.github.com/googleapis/python-texttospeech/commit/456786f583d90b7d0172525a9277f79ebdddf495))
+* finishing touches for the cloudsite docs pipeline ([#71](https://www.github.com/googleapis/python-texttospeech/issues/71)) ([6f5e64c](https://www.github.com/googleapis/python-texttospeech/commit/6f5e64c21ac82c46f5d022c4d272965c2c73bdf8))
+* remove an unnecessary hyphen ([#69](https://www.github.com/googleapis/python-texttospeech/issues/69)) ([55ff787](https://www.github.com/googleapis/python-texttospeech/commit/55ff7879e1669d101b1e01e7a7acdaa1786ca829))
+
 ## [2.1.0](https://www.github.com/googleapis/python-texttospeech/compare/v2.0.0...v2.1.0) (2020-06-20)
 
 
