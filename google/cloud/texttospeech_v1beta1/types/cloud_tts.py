@@ -70,8 +70,8 @@ class ListVoicesRequest(proto.Message):
             return voices that can be used to synthesize this
             language_code. E.g. when specifying "en-NZ", you will get
             supported "en-\*" voices; when specifying "no", you will get
-            supported "no-\*" (Norwegian) and "nb-*" (Norwegian Bokmal)
-            voices; specifying "zh" will also get supported "cmn-*"
+            supported "no-\*" (Norwegian) and "nb-\*" (Norwegian Bokmal)
+            voices; specifying "zh" will also get supported "cmn-\*"
             voices; specifying "zh-hk" will also get supported "yue-\*"
             voices.
     """
