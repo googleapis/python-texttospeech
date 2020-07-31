@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:tmatsuo/python-texttospeech.git",
-        "sha": "40dfcdc3acbab3613b6c45793a4563ba1657b0e6"
+        "sha": "f69dc7feaa9933d4b0a734377270122e0843ffbf"
       }
     },
     {
