@@ -24,7 +24,7 @@ Example usage:
 import argparse
 
 
-# [START tts_synthesize_text_audio_profile]
+# [START tts_synthesize_text_audiole]
 # [START tts_synthesize_text_audio_profile_beta]
 def synthesize_text_with_audio_profile(text, output, effects_profile_id):
     """Synthesizes speech from the input string of text."""
