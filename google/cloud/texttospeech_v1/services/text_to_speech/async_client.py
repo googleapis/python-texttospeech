@@ -43,8 +43,43 @@ class TextToSpeechAsyncClient:
     DEFAULT_ENDPOINT = TextToSpeechClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = TextToSpeechClient.DEFAULT_MTLS_ENDPOINT
 
+    common_billing_account_path = staticmethod(
+        TextToSpeechClient.common_billing_account_path
+    )
+    parse_common_billing_account_path = staticmethod(
+        TextToSpeechClient.parse_common_billing_account_path
+    )
+
+    common_folder_path = staticmethod(TextToSpeechClient.common_folder_path)
+    parse_common_folder_path = staticmethod(TextToSpeechClient.parse_common_folder_path)
+
+    common_organization_path = staticmethod(TextToSpeechClient.common_organization_path)
+    parse_common_organization_path = staticmethod(
+        TextToSpeechClient.parse_common_organization_path
+    )
+
+    common_project_path = staticmethod(TextToSpeechClient.common_project_path)
+    parse_common_project_path = staticmethod(
+        TextToSpeechClient.parse_common_project_path
+    )
+
+    common_location_path = staticmethod(TextToSpeechClient.common_location_path)
+    parse_common_location_path = staticmethod(
+        TextToSpeechClient.parse_common_location_path
+    )
+
+    from_service_account_info = TextToSpeechClient.from_service_account_info
     from_service_account_file = TextToSpeechClient.from_service_account_file
     from_service_account_json = from_service_account_file
+
+    @property
+    def transport(self) -> TextToSpeechTransport:
+        """Return the transport used by the client instance.
+
+        Returns:
+            TextToSpeechTransport: The transport used by the client instance.
+        """
+        return self._client.transport
 
     get_transport_class = functools.partial(
         type(TextToSpeechClient).get_transport_class, type(TextToSpeechClient)
@@ -72,16 +107,19 @@ class TextToSpeechAsyncClient:
             client_options (ClientOptions): Custom options for the client. It
                 won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
-                default endpoint provided by the client. GOOGLE_API_USE_MTLS
+                default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
                 environment variable can also be used to override the endpoint:
                 "always" (always use the default mTLS endpoint), "never" (always
-                use the default regular endpoint, this is the default value for
-                the environment variable) and "auto" (auto switch to the default
-                mTLS endpoint if client SSL credentials is present). However,
-                the ``api_endpoint`` property takes precedence if provided.
-                (2) The ``client_cert_source`` property is used to provide client
-                SSL credentials for mutual TLS transport. If not provided, the
-                default SSL credentials will be used if present.
+                use the default regular endpoint) and "auto" (auto switch to the
+                default mTLS endpoint if client certificate is present, this is
+                the default value). However, the ``api_endpoint`` property takes
+                precedence if provided.
+                (2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable
+                is "true", then the ``client_cert_source`` property can be used
+                to provide client certificate for mutual TLS transport. If
+                not provided, the default SSL client certificate will be used if
+                present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is "false" or not
+                set, no client certificate will be used.
 
         Raises:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
@@ -107,7 +145,7 @@ class TextToSpeechAsyncClient:
         r"""Returns a list of Voice supported for synthesis.
 
         Args:
-            request (:class:`~.cloud_tts.ListVoicesRequest`):
+            request (:class:`google.cloud.texttospeech_v1.types.ListVoicesRequest`):
                 The request object. The top-level message sent by the
                 client for the `ListVoices` method.
             language_code (:class:`str`):
@@ -121,6 +159,7 @@ class TextToSpeechAsyncClient:
                 (Norwegian Bokmal) voices; specifying "zh" will also get
                 supported "cmn-\*" voices; specifying "zh-hk" will also
                 get supported "yue-\*" voices.
+
                 This corresponds to the ``language_code`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -132,15 +171,16 @@ class TextToSpeechAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.cloud_tts.ListVoicesResponse:
-                The message returned to the client by the ``ListVoices``
+            google.cloud.texttospeech_v1.types.ListVoicesResponse:
+                The message returned to the client by the ListVoices
                 method.
 
         """
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([language_code]):
+        has_flattened_params = any([language_code])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -172,7 +212,7 @@ class TextToSpeechAsyncClient:
         self,
         request: cloud_tts.SynthesizeSpeechRequest = None,
         *,
-        input: cloud_tts.SynthesisInput = None,
+        input_: cloud_tts.SynthesisInput = None,
         voice: cloud_tts.VoiceSelectionParams = None,
         audio_config: cloud_tts.AudioConfig = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
@@ -183,24 +223,27 @@ class TextToSpeechAsyncClient:
         after all text input has been processed.
 
         Args:
-            request (:class:`~.cloud_tts.SynthesizeSpeechRequest`):
+            request (:class:`google.cloud.texttospeech_v1.types.SynthesizeSpeechRequest`):
                 The request object. The top-level message sent by the
                 client for the `SynthesizeSpeech` method.
-            input (:class:`~.cloud_tts.SynthesisInput`):
+            input_ (:class:`google.cloud.texttospeech_v1.types.SynthesisInput`):
                 Required. The Synthesizer requires
                 either plain text or SSML as input.
-                This corresponds to the ``input`` field
+
+                This corresponds to the ``input_`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            voice (:class:`~.cloud_tts.VoiceSelectionParams`):
+            voice (:class:`google.cloud.texttospeech_v1.types.VoiceSelectionParams`):
                 Required. The desired voice of the
                 synthesized audio.
+
                 This corresponds to the ``voice`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            audio_config (:class:`~.cloud_tts.AudioConfig`):
+            audio_config (:class:`google.cloud.texttospeech_v1.types.AudioConfig`):
                 Required. The configuration of the
                 synthesized audio.
+
                 This corresponds to the ``audio_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -212,15 +255,16 @@ class TextToSpeechAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.cloud_tts.SynthesizeSpeechResponse:
+            google.cloud.texttospeech_v1.types.SynthesizeSpeechResponse:
                 The message returned to the client by the
-                ``SynthesizeSpeech`` method.
+                SynthesizeSpeech method.
 
         """
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([input, voice, audio_config]):
+        has_flattened_params = any([input_, voice, audio_config])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -231,8 +275,8 @@ class TextToSpeechAsyncClient:
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
 
-        if input is not None:
-            request.input = input
+        if input_ is not None:
+            request.input_ = input_
         if voice is not None:
             request.voice = voice
         if audio_config is not None:
