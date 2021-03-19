@@ -33,7 +33,7 @@ for version in versions:
         bazel_target=f"//google/cloud/texttospeech/{version}:texttospeech-{version}-py",
 
     )
-    s.move(library, excludes=["setup.py", "docs/index.rst"])
+    s.move(library, excludes=["setup.py", "docs/index.rst", "README.rst"])
 
 # Sphinx interprets `*` as emphasis
 s.replace(
