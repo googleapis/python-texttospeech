@@ -42,7 +42,7 @@ class texttospeechCallTransformer(cst.CSTTransformer):
     CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')
     METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {
     'list_voices': ('language_code', ),
-    'synthesize_speech': ('input_', 'voice', 'audio_config', ),
+    'synthesize_speech': ('input', 'voice', 'audio_config', ),
 
     }
 

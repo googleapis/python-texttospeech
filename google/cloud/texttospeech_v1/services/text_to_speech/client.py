@@ -404,7 +404,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
         self,
         request: cloud_tts.SynthesizeSpeechRequest = None,
         *,
-        input_: cloud_tts.SynthesisInput = None,
+        input: cloud_tts.SynthesisInput = None,
         voice: cloud_tts.VoiceSelectionParams = None,
         audio_config: cloud_tts.AudioConfig = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
@@ -418,11 +418,11 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
             request (google.cloud.texttospeech_v1.types.SynthesizeSpeechRequest):
                 The request object. The top-level message sent by the
                 client for the `SynthesizeSpeech` method.
-            input_ (google.cloud.texttospeech_v1.types.SynthesisInput):
+            input (google.cloud.texttospeech_v1.types.SynthesisInput):
                 Required. The Synthesizer requires
                 either plain text or SSML as input.
 
-                This corresponds to the ``input_`` field
+                This corresponds to the ``input`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
             voice (google.cloud.texttospeech_v1.types.VoiceSelectionParams):
@@ -455,7 +455,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([input_, voice, audio_config])
+        has_flattened_params = any([input, voice, audio_config])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -472,8 +472,8 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
 
-            if input_ is not None:
-                request.input_ = input_
+            if input is not None:
+                request.input = input
             if voice is not None:
                 request.voice = voice
             if audio_config is not None:

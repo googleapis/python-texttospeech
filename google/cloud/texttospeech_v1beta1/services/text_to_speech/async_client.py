@@ -68,8 +68,36 @@ class TextToSpeechAsyncClient:
         TextToSpeechClient.parse_common_location_path
     )
 
-    from_service_account_info = TextToSpeechClient.from_service_account_info
-    from_service_account_file = TextToSpeechClient.from_service_account_file
+    @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            TextToSpeechAsyncClient: The constructed client.
+        """
+        return TextToSpeechClient.from_service_account_info.__func__(TextToSpeechAsyncClient, info, *args, **kwargs)  # type: ignore
+
+    @classmethod
+    def from_service_account_file(cls, filename: str, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials
+        file.
+
+        Args:
+            filename (str): The path to the service account private key json
+                file.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            TextToSpeechAsyncClient: The constructed client.
+        """
+        return TextToSpeechClient.from_service_account_file.__func__(TextToSpeechAsyncClient, filename, *args, **kwargs)  # type: ignore
+
     from_service_account_json = from_service_account_file
 
     @property
@@ -212,7 +240,7 @@ class TextToSpeechAsyncClient:
         self,
         request: cloud_tts.SynthesizeSpeechRequest = None,
         *,
-        input_: cloud_tts.SynthesisInput = None,
+        input: cloud_tts.SynthesisInput = None,
         voice: cloud_tts.VoiceSelectionParams = None,
         audio_config: cloud_tts.AudioConfig = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
@@ -226,11 +254,11 @@ class TextToSpeechAsyncClient:
             request (:class:`google.cloud.texttospeech_v1beta1.types.SynthesizeSpeechRequest`):
                 The request object. The top-level message sent by the
                 client for the `SynthesizeSpeech` method.
-            input_ (:class:`google.cloud.texttospeech_v1beta1.types.SynthesisInput`):
+            input (:class:`google.cloud.texttospeech_v1beta1.types.SynthesisInput`):
                 Required. The Synthesizer requires
                 either plain text or SSML as input.
 
-                This corresponds to the ``input_`` field
+                This corresponds to the ``input`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
             voice (:class:`google.cloud.texttospeech_v1beta1.types.VoiceSelectionParams`):
@@ -263,7 +291,7 @@ class TextToSpeechAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([input_, voice, audio_config])
+        has_flattened_params = any([input, voice, audio_config])
         if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
@@ -275,8 +303,8 @@ class TextToSpeechAsyncClient:
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
 
-        if input_ is not None:
-            request.input_ = input_
+        if input is not None:
+            request.input = input
         if voice is not None:
             request.voice = voice
         if audio_config is not None:

@@ -19,7 +19,7 @@ import synthtool as s
 from synthtool import gcp
 from synthtool.languages import python
 
-gapic = gcp.GAPICMicrogenerator()
+gapic = gcp.GAPICBazel()
 common = gcp.CommonTemplates()
 versions = ["v1beta1", "v1"]
 
@@ -27,7 +27,12 @@ versions = ["v1beta1", "v1"]
 # Generate texttospeech GAPIC layer
 # ----------------------------------------------------------------------------
 for version in versions:
-    library = gapic.py_library(service="texttospeech", version=version,)
+    library = gapic.py_library(
+        service="texttospeech",
+        version=version,
+        bazel_target=f"//google/cloud/texttospeech/{version}:texttospeech-{version}-py",
+
+    )
     s.move(library, excludes=["setup.py", "docs/index.rst"])
 
 # Sphinx interprets `*` as emphasis
@@ -43,8 +48,6 @@ s.replace(
 templated_files = common.py_library(
     samples=True,
     microgenerator=True,
-    unit_test_python_versions=["3.6", "3.7", "3.8"],
-    system_test_python_versions=["3.7"],
 )
 s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .coveragerc file
 

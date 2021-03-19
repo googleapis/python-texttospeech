@@ -80,15 +80,17 @@ def test__get_default_mtls_endpoint():
     assert TextToSpeechClient._get_default_mtls_endpoint(non_googleapi) == non_googleapi
 
 
-def test_text_to_speech_client_from_service_account_info():
+@pytest.mark.parametrize("client_class", [TextToSpeechClient, TextToSpeechAsyncClient,])
+def test_text_to_speech_client_from_service_account_info(client_class):
     creds = credentials.AnonymousCredentials()
     with mock.patch.object(
         service_account.Credentials, "from_service_account_info"
     ) as factory:
         factory.return_value = creds
         info = {"valid": True}
-        client = TextToSpeechClient.from_service_account_info(info)
+        client = client_class.from_service_account_info(info)
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "texttospeech.googleapis.com:443"
 
@@ -102,9 +104,11 @@ def test_text_to_speech_client_from_service_account_file(client_class):
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         client = client_class.from_service_account_json("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "texttospeech.googleapis.com:443"
 
@@ -455,6 +459,22 @@ def test_list_voices_from_dict():
     test_list_voices(request_type=dict)
 
 
+def test_list_voices_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = TextToSpeechClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client.transport.list_voices), "__call__") as call:
+        client.list_voices()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == cloud_tts.ListVoicesRequest()
+
+
 @pytest.mark.asyncio
 async def test_list_voices_async(
     transport: str = "grpc_asyncio", request_type=cloud_tts.ListVoicesRequest
@@ -597,6 +617,24 @@ def test_synthesize_speech_from_dict():
     test_synthesize_speech(request_type=dict)
 
 
+def test_synthesize_speech_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = TextToSpeechClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.synthesize_speech), "__call__"
+    ) as call:
+        client.synthesize_speech()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == cloud_tts.SynthesizeSpeechRequest()
+
+
 @pytest.mark.asyncio
 async def test_synthesize_speech_async(
     transport: str = "grpc_asyncio", request_type=cloud_tts.SynthesizeSpeechRequest
@@ -650,7 +688,7 @@ def test_synthesize_speech_flattened():
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.synthesize_speech(
-            input_=cloud_tts.SynthesisInput(text="text_value"),
+            input=cloud_tts.SynthesisInput(text="text_value"),
             voice=cloud_tts.VoiceSelectionParams(language_code="language_code_value"),
             audio_config=cloud_tts.AudioConfig(
                 audio_encoding=cloud_tts.AudioEncoding.LINEAR16
@@ -662,7 +700,7 @@ def test_synthesize_speech_flattened():
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
 
-        assert args[0].input_ == cloud_tts.SynthesisInput(text="text_value")
+        assert args[0].input == cloud_tts.SynthesisInput(text="text_value")
 
         assert args[0].voice == cloud_tts.VoiceSelectionParams(
             language_code="language_code_value"
@@ -681,7 +719,7 @@ def test_synthesize_speech_flattened_error():
     with pytest.raises(ValueError):
         client.synthesize_speech(
             cloud_tts.SynthesizeSpeechRequest(),
-            input_=cloud_tts.SynthesisInput(text="text_value"),
+            input=cloud_tts.SynthesisInput(text="text_value"),
             voice=cloud_tts.VoiceSelectionParams(language_code="language_code_value"),
             audio_config=cloud_tts.AudioConfig(
                 audio_encoding=cloud_tts.AudioEncoding.LINEAR16
@@ -706,7 +744,7 @@ async def test_synthesize_speech_flattened_async():
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         response = await client.synthesize_speech(
-            input_=cloud_tts.SynthesisInput(text="text_value"),
+            input=cloud_tts.SynthesisInput(text="text_value"),
             voice=cloud_tts.VoiceSelectionParams(language_code="language_code_value"),
             audio_config=cloud_tts.AudioConfig(
                 audio_encoding=cloud_tts.AudioEncoding.LINEAR16
@@ -718,7 +756,7 @@ async def test_synthesize_speech_flattened_async():
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
 
-        assert args[0].input_ == cloud_tts.SynthesisInput(text="text_value")
+        assert args[0].input == cloud_tts.SynthesisInput(text="text_value")
 
         assert args[0].voice == cloud_tts.VoiceSelectionParams(
             language_code="language_code_value"
@@ -738,7 +776,7 @@ async def test_synthesize_speech_flattened_error_async():
     with pytest.raises(ValueError):
         await client.synthesize_speech(
             cloud_tts.SynthesizeSpeechRequest(),
-            input_=cloud_tts.SynthesisInput(text="text_value"),
+            input=cloud_tts.SynthesisInput(text="text_value"),
             voice=cloud_tts.VoiceSelectionParams(language_code="language_code_value"),
             audio_config=cloud_tts.AudioConfig(
                 audio_encoding=cloud_tts.AudioEncoding.LINEAR16

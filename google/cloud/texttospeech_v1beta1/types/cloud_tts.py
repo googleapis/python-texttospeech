@@ -122,7 +122,7 @@ class SynthesizeSpeechRequest(proto.Message):
     ``SynthesizeSpeech`` method.
 
     Attributes:
-        input_ (google.cloud.texttospeech_v1beta1.types.SynthesisInput):
+        input (google.cloud.texttospeech_v1beta1.types.SynthesisInput):
             Required. The Synthesizer requires either
             plain text or SSML as input.
         voice (google.cloud.texttospeech_v1beta1.types.VoiceSelectionParams):
@@ -143,7 +143,7 @@ class SynthesizeSpeechRequest(proto.Message):
         TIMEPOINT_TYPE_UNSPECIFIED = 0
         SSML_MARK = 1
 
-    input_ = proto.Field(proto.MESSAGE, number=1, message="SynthesisInput",)
+    input = proto.Field(proto.MESSAGE, number=1, message="SynthesisInput",)
 
     voice = proto.Field(proto.MESSAGE, number=2, message="VoiceSelectionParams",)
 
