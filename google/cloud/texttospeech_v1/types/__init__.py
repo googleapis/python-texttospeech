@@ -24,8 +24,9 @@ from .cloud_tts import (
     VoiceSelectionParams,
     AudioConfig,
     SynthesizeSpeechResponse,
+    SsmlVoiceGender,
+    AudioEncoding,
 )
-
 
 __all__ = (
     "ListVoicesRequest",
@@ -36,4 +37,6 @@ __all__ = (
     "VoiceSelectionParams",
     "AudioConfig",
     "SynthesizeSpeechResponse",
+    "SsmlVoiceGender",
+    "AudioEncoding",
 )
