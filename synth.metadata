@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-texttospeech.git",
-        "sha": "dc07688434edf0774a8b19d2c6250eddc942b60a"
+        "sha": "3d6431c1b978262ecd353746d45c62cfcab0c431"
       }
     },
     {
@@ -163,6 +163,7 @@
     "tests/unit/gapic/texttospeech_v1/__init__.py",
     "tests/unit/gapic/texttospeech_v1/test_text_to_speech.py",
     "tests/unit/gapic/texttospeech_v1beta1/__init__.py",
-    "tests/unit/gapic/texttospeech_v1beta1/test_text_to_speech.py"
+    "tests/unit/gapic/texttospeech_v1beta1/test_text_to_speech.py",
+    "texttospeech-v1beta1-py.tar.gz"
   ]
 }
