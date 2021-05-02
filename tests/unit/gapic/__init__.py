@@ -13,30 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .cloud_tts import (
-    AudioConfig,
-    ListVoicesRequest,
-    ListVoicesResponse,
-    SynthesisInput,
-    SynthesizeSpeechRequest,
-    SynthesizeSpeechResponse,
-    Timepoint,
-    Voice,
-    VoiceSelectionParams,
-    AudioEncoding,
-    SsmlVoiceGender,
-)
-
-__all__ = (
-    'AudioConfig',
-    'ListVoicesRequest',
-    'ListVoicesResponse',
-    'SynthesisInput',
-    'SynthesizeSpeechRequest',
-    'SynthesizeSpeechResponse',
-    'Timepoint',
-    'Voice',
-    'VoiceSelectionParams',
-    'AudioEncoding',
-    'SsmlVoiceGender',
-)
