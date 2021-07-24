@@ -4,6 +4,18 @@
 
 [1]: https://pypi.org/project/google-cloud-texttospeech/#history
 
+## [2.6.0](https://www.github.com/googleapis/python-texttospeech/compare/v2.5.1...v2.6.0) (2021-07-24)
+
+
+### Features
+
+* add Samples section to CONTRIBUTING.rst ([#166](https://www.github.com/googleapis/python-texttospeech/issues/166)) ([053abe3](https://www.github.com/googleapis/python-texttospeech/commit/053abe3afc1107bdacd164e6ca4cd60b5ca07df7))
+
+
+### Bug Fixes
+
+* enable self signed jwt for grpc ([#171](https://www.github.com/googleapis/python-texttospeech/issues/171)) ([9c1c437](https://www.github.com/googleapis/python-texttospeech/commit/9c1c4371caa712a749b406257c09d98f6b428e7b))
+
 ### [2.5.1](https://www.github.com/googleapis/python-texttospeech/compare/v2.5.0...v2.5.1) (2021-07-20)
 
 
