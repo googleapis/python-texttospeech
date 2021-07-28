@@ -7,14 +7,14 @@
 ### [2.5.2](https://www.github.com/googleapis/python-texttospeech/compare/v2.5.1...v2.5.2) (2021-07-28)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#166](https://www.github.com/googleapis/python-texttospeech/issues/166)) ([053abe3](https://www.github.com/googleapis/python-texttospeech/commit/053abe3afc1107bdacd164e6ca4cd60b5ca07df7))
-
-
 ### Bug Fixes
 
 * enable self signed jwt for grpc ([#171](https://www.github.com/googleapis/python-texttospeech/issues/171)) ([9c1c437](https://www.github.com/googleapis/python-texttospeech/commit/9c1c4371caa712a749b406257c09d98f6b428e7b))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#166](https://www.github.com/googleapis/python-texttospeech/issues/166)) ([053abe3](https://www.github.com/googleapis/python-texttospeech/commit/053abe3afc1107bdacd164e6ca4cd60b5ca07df7))
 
 
 ### Miscellaneous Chores
