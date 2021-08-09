@@ -24,9 +24,11 @@ Example usage:
 def run_quickstart():
     # [START tts_quickstart]
     """Synthesizes speech from the input string of text or ssml.
+    
+    This sample is compatible with python>=3.6.
 
     Note: ssml must be well-formed according to:
-        https://www.w3.org/TR/speech-synthesis/
+        https://www.w3.org/TR/speech-synthesis/    
     """
     from google.cloud import texttospeech
 
