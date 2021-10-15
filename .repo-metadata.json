@@ -11,6 +11,6 @@
     "distribution_name": "google-cloud-texttospeech",
     "api_id": "texttospeech.googleapis.com",
     "requires_billing": true,
-    "default_version": "",
+    "default_version": "v1",
     "codeowner_team": ""
 }
