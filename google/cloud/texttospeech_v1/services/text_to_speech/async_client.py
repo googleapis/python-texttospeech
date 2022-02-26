@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2020 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -206,7 +206,7 @@ class TextToSpeechAsyncClient:
     ) -> cloud_tts.ListVoicesResponse:
         r"""Returns a list of Voice supported for synthesis.
 
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import texttospeech_v1
 
@@ -300,7 +300,7 @@ class TextToSpeechAsyncClient:
         after all text input has been processed.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import texttospeech_v1
 

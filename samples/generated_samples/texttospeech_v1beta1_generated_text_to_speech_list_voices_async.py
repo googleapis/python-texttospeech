@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2020 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,16 +23,16 @@
 #   python3 -m pip install google-cloud-texttospeech
 
 
-# [START texttospeech_generated_texttospeech_v1_TextToSpeech_ListVoices_async]
-from google.cloud import texttospeech_v1
+# [START texttospeech_v1beta1_generated_TextToSpeech_ListVoices_async]
+from google.cloud import texttospeech_v1beta1
 
 
 async def sample_list_voices():
     # Create a client
-    client = texttospeech_v1.TextToSpeechAsyncClient()
+    client = texttospeech_v1beta1.TextToSpeechAsyncClient()
 
     # Initialize request argument(s)
-    request = texttospeech_v1.ListVoicesRequest(
+    request = texttospeech_v1beta1.ListVoicesRequest(
     )
 
     # Make the request
@@ -41,4 +41,4 @@ async def sample_list_voices():
     # Handle the response
     print(response)
 
-# [END texttospeech_generated_texttospeech_v1_TextToSpeech_ListVoices_async]
+# [END texttospeech_v1beta1_generated_TextToSpeech_ListVoices_async]
