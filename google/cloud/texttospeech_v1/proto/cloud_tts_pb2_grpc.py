@@ -7,15 +7,14 @@ from google.cloud.texttospeech_v1.proto import (
 
 
 class TextToSpeechStub(object):
-    """Service that implements Google Cloud Text-to-Speech API.
-  """
+    """Service that implements Google Cloud Text-to-Speech API."""
 
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.ListVoices = channel.unary_unary(
             "/google.cloud.texttospeech.v1.TextToSpeech/ListVoices",
             request_serializer=google_dot_cloud_dot_texttospeech__v1_dot_proto_dot_cloud__tts__pb2.ListVoicesRequest.SerializeToString,
@@ -29,20 +28,18 @@ class TextToSpeechStub(object):
 
 
 class TextToSpeechServicer(object):
-    """Service that implements Google Cloud Text-to-Speech API.
-  """
+    """Service that implements Google Cloud Text-to-Speech API."""
 
     def ListVoices(self, request, context):
-        """Returns a list of Voice supported for synthesis.
-    """
+        """Returns a list of Voice supported for synthesis."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def SynthesizeSpeech(self, request, context):
         """Synthesizes speech synchronously: receive results after all text input
-    has been processed.
-    """
+        has been processed.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
