@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -436,7 +436,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import texttospeech_v1
+                    from google.cloud import texttospeech_v1
 
             def sample_list_voices():
                 # Create a client
@@ -535,7 +535,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import texttospeech_v1
+                    from google.cloud import texttospeech_v1
 
             def sample_synthesize_speech():
                 # Create a client
