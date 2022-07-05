@@ -1268,7 +1268,6 @@ def test_text_to_speech_transport_auth_adc(transport_class):
     [
         transports.TextToSpeechGrpcTransport,
         transports.TextToSpeechGrpcAsyncIOTransport,
-        transports.TextToSpeechRestTransport,
     ],
 )
 def test_text_to_speech_transport_auth_gdch_credentials(transport_class):
