@@ -189,7 +189,7 @@ def unit(session):
 def install_systemtest_dependencies(session, *constraints):
 
     # Use pre-release gRPC for system tests.
-    session.install("--pre", "grpcio!=1.49.0rc1")
+    session.install("--pre", "grpcio")
 
     session.install(*SYSTEM_TEST_STANDARD_DEPENDENCIES, *constraints)
 
