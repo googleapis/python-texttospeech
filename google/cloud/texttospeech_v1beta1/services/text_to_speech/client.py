@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -55,7 +66,7 @@ class TextToSpeechClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[TextToSpeechTransport]:
         """Returns an appropriate transport class.
 
@@ -330,7 +341,7 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, TextToSpeechTransport, None] = None,
+        transport: Optional[Union[str, TextToSpeechTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -428,11 +439,11 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
 
     def list_voices(
         self,
-        request: Union[cloud_tts.ListVoicesRequest, dict] = None,
+        request: Optional[Union[cloud_tts.ListVoicesRequest, dict]] = None,
         *,
-        language_code: str = None,
+        language_code: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_tts.ListVoicesResponse:
         r"""Returns a list of Voice supported for synthesis.
@@ -530,13 +541,13 @@ class TextToSpeechClient(metaclass=TextToSpeechClientMeta):
 
     def synthesize_speech(
         self,
-        request: Union[cloud_tts.SynthesizeSpeechRequest, dict] = None,
+        request: Optional[Union[cloud_tts.SynthesizeSpeechRequest, dict]] = None,
         *,
-        input: cloud_tts.SynthesisInput = None,
-        voice: cloud_tts.VoiceSelectionParams = None,
-        audio_config: cloud_tts.AudioConfig = None,
+        input: Optional[cloud_tts.SynthesisInput] = None,
+        voice: Optional[cloud_tts.VoiceSelectionParams] = None,
+        audio_config: Optional[cloud_tts.AudioConfig] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_tts.SynthesizeSpeechResponse:
         r"""Synthesizes speech synchronously: receive results
