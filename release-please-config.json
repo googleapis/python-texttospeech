@@ -7,12 +7,12 @@
         "google/cloud/texttospeech/gapic_version.py",
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_texttospeech_v1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.texttospeech.v1.json",
           "jsonpath": "$.clientLibrary.version"
         },
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_texttospeech_v1beta1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.texttospeech.v1beta1.json",
           "jsonpath": "$.clientLibrary.version"
         }
       ]
