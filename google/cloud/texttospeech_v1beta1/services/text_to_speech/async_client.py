@@ -42,6 +42,8 @@ try:
 except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
+from google.longrunning import operations_pb2
+
 from google.cloud.texttospeech_v1beta1.types import cloud_tts
 
 from .client import TextToSpeechClient
