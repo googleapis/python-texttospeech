@@ -4,6 +4,25 @@
 
 [1]: https://pypi.org/project/google-cloud-texttospeech/#history
 
+## [2.15.0](https://github.com/googleapis/python-texttospeech/compare/v2.14.1...v2.15.0) (2023-09-13)
+
+
+### Features
+
+* Enable "rest" transport in Python for services supporting numeric enums ([#362](https://github.com/googleapis/python-texttospeech/issues/362)) ([52bcda6](https://github.com/googleapis/python-texttospeech/commit/52bcda6cd119a676bc182e900f8cb0e0c52e99b2))
+
+
+### Bug Fixes
+
+* Add async context manager return types ([#375](https://github.com/googleapis/python-texttospeech/issues/375)) ([8de4b09](https://github.com/googleapis/python-texttospeech/commit/8de4b09dbafd91e251b78981e838ddcfca989ff5))
+
+
+### Documentation
+
+* Fix formatting of request arg in docstring ([#367](https://github.com/googleapis/python-texttospeech/issues/367)) ([4747441](https://github.com/googleapis/python-texttospeech/commit/474744180b2a148c513ece4ba15fa66206c70d8d))
+* Minor formatting ([b85a47c](https://github.com/googleapis/python-texttospeech/commit/b85a47c63e12810d7badbd3336a12db9eace917f))
+* Update documentation to require certain fields ([#368](https://github.com/googleapis/python-texttospeech/issues/368)) ([7f4c79f](https://github.com/googleapis/python-texttospeech/commit/7f4c79f5633cc2b2d7425659c4a7e2067469fa88))
+
 ## [2.14.1](https://github.com/googleapis/python-texttospeech/compare/v2.14.0...v2.14.1) (2023-01-20)
 
 
